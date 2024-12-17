@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import Mascot from "./Mascot";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 pt-20">
       <div className="container mx-auto px-6">
@@ -45,6 +48,7 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/programs")}
               className="bg-primary text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
               Explore Programs

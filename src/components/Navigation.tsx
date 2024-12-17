@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,19 +29,25 @@ const Navigation = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-bold text-primary"
+            className="text-2xl font-bold text-primary cursor-pointer"
+            onClick={() => navigate("/")}
           >
             Kidzee
           </motion.div>
           <div className="hidden md:flex space-x-8">
-            {["Home", "Programs", "Gallery", "Contact"].map((item) => (
+            {[
+              { name: "Home", path: "/" },
+              { name: "Programs", path: "/programs" },
+              { name: "Gallery", path: "/gallery" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
               <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.name}
+                onClick={() => navigate(item.path)}
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-800 hover:text-primary transition-colors"
+                className="text-gray-800 hover:text-primary transition-colors cursor-pointer"
               >
-                {item}
+                {item.name}
               </motion.a>
             ))}
           </div>
