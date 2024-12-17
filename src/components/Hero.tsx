@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Mascot from "./Mascot";
 
 const Hero = () => {
   return (
@@ -57,12 +58,9 @@ const Hero = () => {
           >
             <div className="relative w-full aspect-square max-w-lg mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl transform rotate-6"></div>
-              <img
-                src="/placeholder.svg"
-                alt="Happy children learning"
-                className="relative rounded-3xl shadow-xl object-cover w-full h-full"
-                loading="lazy"
-              />
+              <div className="relative rounded-3xl shadow-xl overflow-hidden w-full h-full bg-white">
+                <Mascot variant="namaste" className="p-8" />
+              </div>
             </div>
           </motion.div>
         </div>
