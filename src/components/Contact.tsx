@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Phone } from "lucide-react";
+import HomeButton from "./HomeButton";
 
 const Contact = () => {
   return (
@@ -56,6 +57,7 @@ const Contact = () => {
           </motion.a>
         </div>
       </div>
+      <HomeButton />
     </div>
   );
 };
