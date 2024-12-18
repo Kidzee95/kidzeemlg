@@ -1,59 +1,79 @@
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Phone } from "lucide-react";
+import { Instagram, Facebook, Phone, MapPin } from "lucide-react";
 import HomeButton from "./HomeButton";
 
 const Contact = () => {
   return (
-    <div className="bg-white py-20">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20">
       <div className="container mx-auto px-6">
-        <motion.div
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-4xl font-bold text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-primary mb-4">Contact Us</h2>
-          <p className="text-gray-600">Get in touch with us through any of these platforms</p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          Get in Touch
+        </motion.h2>
+        <div className="flex flex-wrap justify-center gap-8">
           <motion.a
-            href="tel:7989043138"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-col items-center p-6 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors"
+            href="tel:+919876543210"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg"
           >
-            <Phone className="w-8 h-8 text-primary mb-4" />
-            <p className="text-lg font-medium text-primary">Call Us</p>
-            <p className="text-gray-600">+91 7989043138</p>
+            <div className="bg-primary/10 p-4 rounded-full mb-4">
+              <Phone className="w-8 h-8 text-primary" />
+            </div>
+            <span className="text-lg font-medium">Call Us</span>
           </motion.a>
 
           <motion.a
-            href="https://www.instagram.com/kidzeemiryalaguda?igsh=MWJpNHh5eDB5aThsbQ=="
+            href="https://www.facebook.com/kidzee.miryalaguda/"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col items-center p-6 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg"
           >
-            <Instagram className="w-8 h-8 text-primary mb-4" />
-            <p className="text-lg font-medium text-primary">Instagram</p>
-            <p className="text-gray-600">Follow Us</p>
+            <div className="bg-primary/10 p-4 rounded-full mb-4">
+              <Facebook className="w-8 h-8 text-primary" />
+            </div>
+            <span className="text-lg font-medium">Facebook</span>
           </motion.a>
 
           <motion.a
-            href="https://www.facebook.com/share/14puJkLBFer/"
+            href="https://www.instagram.com/kidzee.miryalaguda/"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-col items-center p-6 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg"
           >
-            <Facebook className="w-8 h-8 text-primary mb-4" />
-            <p className="text-lg font-medium text-primary">Facebook</p>
-            <p className="text-gray-600">Like Us</p>
+            <div className="bg-primary/10 p-4 rounded-full mb-4">
+              <Instagram className="w-8 h-8 text-primary" />
+            </div>
+            <span className="text-lg font-medium">Instagram</span>
+          </motion.a>
+
+          <motion.a
+            href="https://maps.app.goo.gl/ahrLvFuSAQzXfcrm7"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ 
+              scale: 1.05,
+              rotateY: 180,
+              transition: { duration: 0.6 }
+            }}
+            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg transform-gpu perspective-1000"
+          >
+            <div className="bg-primary/10 p-4 rounded-full mb-4">
+              <MapPin className="w-8 h-8 text-primary" />
+            </div>
+            <span className="text-lg font-medium">Find Us</span>
           </motion.a>
         </div>
       </div>
