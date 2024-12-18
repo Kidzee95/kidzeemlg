@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import HomeButton from "./HomeButton";
 import { Button } from "./ui/button";
-import { Upload } from "lucide-react";
+import { Upload, ExternalLink } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 
 const Gallery = () => {
@@ -34,10 +34,20 @@ const Gallery = () => {
         >
           <div className="flex items-center justify-between">
             <h1 className="text-4xl font-bold text-primary">Our Gallery</h1>
-            <Button onClick={handleUpload} className="gap-2">
-              <Upload className="w-4 h-4" />
-              Upload Image
-            </Button>
+            <div className="flex gap-4">
+              <Button onClick={handleUpload} className="gap-2">
+                <Upload className="w-4 h-4" />
+                Upload Image
+              </Button>
+              <Button 
+                variant="secondary"
+                className="gap-2"
+                onClick={() => window.open("https://www.google.com/maps/uv?pb=!1s0x3a35250077828ec9%3A0x8f9a17a74ccae791!3m1!7e115!4s%2Fmaps%2Fplace%2Fkidzee%2Bmiryalaguda%2F%4016.8633039%2C79.5729762%2C3a%2C75y%2C39.92h%2C90t%2Fdata%3D*213m4*211e1*213m2*211sxkXu3fGsj1q-MR6i5zHBGQ*212e0*214m2*213m1*211s0x3a35250077828ec9%3A0x8f9a17a74ccae791%3Fsa%3DX%26ved%3D2ahUKEwjwqqeP1bCKAxUw4jgGHVleLh8Qpx96BAgvEAA!5skidzee%20miryalaguda%20-%20Google%20Search!15sCgIgARICGAI&imagekey=!1e10!2sAF1QipMpmoR6zRmpAYwQk9DaNyJ_zAHcH9dsNJapH08f&cr=le_a7&hl=en&ved=1t%3A206134&ictx=111", "_blank")}
+              >
+                <ExternalLink className="w-4 h-4" />
+                More Photos
+              </Button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
