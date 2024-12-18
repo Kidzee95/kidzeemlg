@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, Phone, MessageSquare } from "lucide-react";
+import { Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
   Tooltip,
@@ -11,11 +11,6 @@ import Mascot from "./Mascot";
 
 const HomeButton = () => {
   const navigate = useNavigate();
-
-  const contactInfo = [
-    { icon: <Phone className="w-4 h-4" />, text: "+91 98765 43210", href: "tel:+919876543210" },
-    { icon: <MessageSquare className="w-4 h-4" />, text: "Message us", href: "https://www.facebook.com/kidzee.miryalaguda/" },
-  ];
 
   return (
     <motion.div
@@ -40,35 +35,21 @@ const HomeButton = () => {
             <TooltipTrigger asChild>
               <button
                 onClick={() => navigate("/")}
-                className="relative bg-primary rounded-full p-4 shadow-lg group transform-gpu perspective-1000"
+                className="relative bg-[#9b87f5] rounded-full p-3 shadow-lg group transform-gpu perspective-1000"
                 style={{
                   transform: "translateZ(0)",
                   backfaceVisibility: "hidden",
                 }}
               >
-                <div className="absolute -top-24 -left-4 w-32 h-32 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute -top-20 -left-4 w-24 h-24 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Mascot variant="pointing" />
                 </div>
-                
-                {/* Contact info popups */}
-                <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  {contactInfo.map((info, index) => (
-                    <a
-                      key={index}
-                      href={info.href}
-                      className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform"
-                    >
-                      {info.icon}
-                      <span className="text-sm text-gray-700">{info.text}</span>
-                    </a>
-                  ))}
-                </div>
 
-                <Home className="w-8 h-8 text-white" />
+                <Home className="w-6 h-6 text-white" />
                 
                 {/* 3D effect layers */}
                 <motion.div
-                  className="absolute -inset-2 bg-secondary rounded-full -z-10"
+                  className="absolute -inset-2 bg-[#E5DEFF] rounded-full -z-10"
                   animate={{
                     scale: [1, 1.2, 1],
                   }}
@@ -78,7 +59,7 @@ const HomeButton = () => {
                     ease: "easeInOut",
                   }}
                 />
-                <div className="absolute -inset-1 bg-primary/30 rounded-full -z-20 blur-sm" />
+                <div className="absolute -inset-1 bg-[#7E69AB]/30 rounded-full -z-20 blur-sm" />
               </button>
             </TooltipTrigger>
             <TooltipContent>
