@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Mascot from "./Mascot";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { scrollY } = useScroll();
+  const scale = useTransform(scrollY, [0, 300], [1, 1.2]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 pt-20">
@@ -30,7 +32,12 @@ const Hero = () => {
               className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
             >
               Nurturing Young Minds for a{" "}
-              <span className="text-primary">Brighter Future</span>
+              <motion.span
+                style={{ scale }}
+                className="text-primary inline-block origin-left"
+              >
+                Brighter Future
+              </motion.span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
