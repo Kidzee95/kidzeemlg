@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
 import Contact from "../components/Contact";
 import HomeButton from "../components/HomeButton";
+import EnquiryForm from "../components/EnquiryForm";
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
     >
       <Navigation />
       <Hero />
+      <EnquiryForm />
       <Contact />
       <HomeButton />
     </motion.div>
