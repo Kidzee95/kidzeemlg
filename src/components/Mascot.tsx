@@ -21,7 +21,17 @@ const Mascot = ({ variant, className = "" }: MascotProps) => {
       className={`w-full h-full object-contain ${className}`}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
+      whileHover={{ 
+        scale: 1.1,
+        rotate: [0, -5, 5, -5, 0],
+        transition: { duration: 0.5 }
+      }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ 
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }}
     />
   );
 };
