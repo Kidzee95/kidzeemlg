@@ -14,67 +14,70 @@ const Contact = () => {
           Get in Touch
         </motion.h2>
         <div className="flex flex-wrap justify-center gap-8">
-          <motion.a
-            href="tel:+919876543210"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg"
-          >
-            <div className="bg-primary/10 p-4 rounded-full mb-4">
-              <Phone className="w-8 h-8 text-primary" />
-            </div>
-            <span className="text-lg font-medium">Call Us</span>
-          </motion.a>
-
-          <motion.a
-            href="https://www.facebook.com/kidzee.miryalaguda/"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg"
-          >
-            <div className="bg-primary/10 p-4 rounded-full mb-4">
-              <Facebook className="w-8 h-8 text-primary" />
-            </div>
-            <span className="text-lg font-medium">Facebook</span>
-          </motion.a>
-
-          <motion.a
-            href="https://www.instagram.com/kidzee.miryalaguda/"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg"
-          >
-            <div className="bg-primary/10 p-4 rounded-full mb-4">
-              <Instagram className="w-8 h-8 text-primary" />
-            </div>
-            <span className="text-lg font-medium">Instagram</span>
-          </motion.a>
-
-          <motion.a
-            href="https://maps.app.goo.gl/ahrLvFuSAQzXfcrm7"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ 
-              scale: 1.05,
-              rotateY: 180,
-              transition: { duration: 0.6 }
-            }}
-            className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg transform-gpu perspective-1000"
-          >
-            <div className="bg-primary/10 p-4 rounded-full mb-4">
-              <MapPin className="w-8 h-8 text-primary" />
-            </div>
-            <span className="text-lg font-medium">Find Us</span>
-          </motion.a>
+          {[
+            { icon: <Phone className="w-8 h-8 text-primary" />, text: "Call Us", href: "tel:+919876543210" },
+            { icon: <Facebook className="w-8 h-8 text-primary" />, text: "Facebook", href: "https://www.facebook.com/kidzee.miryalaguda/" },
+            { icon: <Instagram className="w-8 h-8 text-primary" />, text: "Instagram", href: "https://www.instagram.com/kidzee.miryalaguda/" },
+            { icon: <MapPin className="w-8 h-8 text-primary" />, text: "Find Us", href: "https://maps.app.goo.gl/ahrLvFuSAQzXfcrm7" }
+          ].map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ 
+                rotateY: 180,
+                transition: { duration: 0.6 }
+              }}
+              style={{ transformStyle: "preserve-3d" }}
+              className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg transform-gpu perspective-1000"
+            >
+              <div
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(0deg)",
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <div className="bg-primary/10 p-4 rounded-full mb-4">
+                  {item.icon}
+                </div>
+                <span className="text-lg font-medium">{item.text}</span>
+              </div>
+              <div
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)",
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <div className="bg-secondary/10 p-4 rounded-full mb-4">
+                  {item.icon}
+                </div>
+                <span className="text-lg font-medium">{item.text}</span>
+              </div>
+              <div className="invisible">
+                <div className="bg-primary/10 p-4 rounded-full mb-4">
+                  {item.icon}
+                </div>
+                <span className="text-lg font-medium">{item.text}</span>
+              </div>
+            </motion.a>
+          ))}
         </div>
       </div>
       <HomeButton />
