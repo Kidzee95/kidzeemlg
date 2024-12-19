@@ -39,7 +39,6 @@ const Navigation = () => {
               { name: "Home", path: "/" },
               { name: "Programs", path: "/programs" },
               { name: "Gallery", path: "/gallery" },
-              { name: "Contact", path: "/contact" },
             ].map((item) => (
               <motion.a
                 key={item.name}
