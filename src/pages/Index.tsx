@@ -4,6 +4,8 @@ import Hero from "../components/Hero";
 import Contact from "../components/Contact";
 import HomeButton from "../components/HomeButton";
 import EnquiryForm from "../components/EnquiryForm";
+import Programs from "../components/Programs";
+import Gallery from "../components/Gallery";
 
 const Index = () => {
   return (
@@ -14,6 +16,8 @@ const Index = () => {
     >
       <Navigation />
       <Hero />
+      <Programs />
+      <Gallery />
       <EnquiryForm />
       <Contact />
       <HomeButton />
