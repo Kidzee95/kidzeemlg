@@ -59,7 +59,7 @@ const EnquiryForm = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold text-primary mb-4">
-            Student Enquiry Form
+            Student Enquiry
           </h2>
           <p className="text-gray-600">
             We'd love to hear from you! Fill out the form below and we'll get back
