@@ -6,11 +6,6 @@ const Hero = () => {
   const navigate = useNavigate();
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 300], [1, 1.2]);
-  
-  // New transform values for 3D effect
-  const perspective = useTransform(scrollY, [0, 300], [1000, 600]);
-  const rotateX = useTransform(scrollY, [0, 300], [0, 10]);
-  const y = useTransform(scrollY, [0, 300], [0, -50]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 pt-20">
@@ -35,21 +30,11 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
-              style={{
-                perspective,
-                transformStyle: "preserve-3d",
-              }}
             >
               Nurturing Young Minds for a{" "}
               <motion.span
-                style={{ 
-                  scale,
-                  rotateX,
-                  y,
-                  display: "inline-block",
-                  transformOrigin: "center",
-                }}
-                className="text-primary"
+                style={{ scale }}
+                className="text-primary inline-block origin-left"
               >
                 Brighter Future
               </motion.span>
