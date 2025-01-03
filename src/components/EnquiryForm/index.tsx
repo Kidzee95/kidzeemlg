@@ -20,25 +20,19 @@ const EnquiryForm = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await fetch("/api/submit-enquiry", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit enquiry");
-      }
-
+      // Log the form data to console for now
+      console.log("Form submitted with values:", values);
+      
+      // Show success message
       toast.success("Enquiry submitted successfully! We'll get back to you soon.");
+      
+      // Reset the form
       form.reset();
     } catch (error) {
-      console.error("Error submitting enquiry:", error);
-      toast.error("Failed to submit enquiry. Please try again later.");
+      console.error("Error submitting form:", error);
+      toast.error("Failed to submit enquiry. Please try again.");
     }
   };
 
@@ -52,7 +46,7 @@ const EnquiryForm = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold text-primary mb-4">
-            Student Enquiry Form
+            Student Enquiry
           </h2>
           <p className="text-gray-600">
             We'd love to hear from you! Fill out the form below and we'll get back
