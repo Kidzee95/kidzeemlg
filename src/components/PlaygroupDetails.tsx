@@ -4,7 +4,7 @@ import Mascot from "./Mascot";
 
 const PlaygroupDetails = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F2FCE2] to-[#D3E4FD]">
+    <div className="min-h-screen" style={{ backgroundColor: "#AC99D0" }}>
       <div className="fixed top-4 left-4 z-50">
         <img 
           src="/lovable-uploads/1432ee48-d9cb-4571-94ca-87f65eb91f70.png" 
@@ -29,9 +29,9 @@ const PlaygroupDetails = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-6xl mx-auto"
         >
-          <h1 className="text-4xl font-bold text-primary mb-6 text-center">Playgroup Program</h1>
+          <h1 className="text-4xl font-bold text-white mb-6 text-center">Playgroup Program</h1>
           
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl space-y-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl space-y-8">
             <p className="text-gray-600 italic">
               *As per RTE- Right to Education and NEP- National Education Policy from state to state.
             </p>
@@ -79,33 +79,21 @@ const PlaygroupDetails = () => {
 
               <section className="bg-primary/5 rounded-xl p-6">
                 <h2 className="text-2xl font-semibold text-primary mb-4">Kidzee Special</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {[
-                    "Artsy",
-                    "Personality Development",
-                    "Showstopper",
-                    "Mental Might",
-                    "Eco-conscious",
-                    "Tell-a-Tale",
-                    "Library",
-                    "Sciencify",
-                    "Whirl & Twirl",
-                    "Sensorium",
-                    "Critical Thinking - Problem solving",
-                    "Intergrated Sanskar",
-                    "Augmented Reality - Fantasy Box"
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      className="bg-white/50 rounded-lg p-2 text-sm text-gray-700 hover:bg-white/80 transition-colors"
-                    >
-                      {item}
-                    </motion.div>
-                  ))}
-                </div>
+                <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                  <li>Artsy</li>
+                  <li>Personality Development</li>
+                  <li>Showstopper</li>
+                  <li>Mental Might</li>
+                  <li>Eco-conscious</li>
+                  <li>Tell-a-Tale</li>
+                  <li>Library</li>
+                  <li>Sciencify</li>
+                  <li>Whirl & Twirl</li>
+                  <li>Sensorium</li>
+                  <li>Critical Thinking - Problem solving</li>
+                  <li>Intergrated Sanskar</li>
+                  <li>Augmented Reality - Fantasy Box</li>
+                </ul>
               </section>
             </div>
           </div>
