@@ -4,9 +4,18 @@ import Mascot from "./Mascot";
 
 const PlaygroupDetails = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F2FCE2] to-[#D3E4FD] py-20">
+    <div className="min-h-screen bg-gradient-to-br from-[#F2FCE2] to-[#D3E4FD]">
+      <div className="fixed top-4 left-4 z-50">
+        <img 
+          src="/lovable-uploads/1432ee48-d9cb-4571-94ca-87f65eb91f70.png" 
+          alt="Kidzee Logo" 
+          className="w-32 md:w-40"
+        />
+      </div>
+      
       <HomeButton />
-      <div className="container mx-auto px-6 relative">
+      
+      <div className="container mx-auto px-4 py-20 relative">
         {/* Decorative Mascots */}
         <div className="absolute -left-4 top-20 opacity-20 scale-75">
           <Mascot variant="standing" />
@@ -18,11 +27,11 @@ const PlaygroupDetails = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
           <h1 className="text-4xl font-bold text-primary mb-6 text-center">Playgroup Program</h1>
           
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl space-y-6">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl space-y-8">
             <p className="text-gray-600 italic">
               *As per RTE- Right to Education and NEP- National Education Policy from state to state.
             </p>
@@ -41,7 +50,7 @@ const PlaygroupDetails = () => {
 
             <section>
               <h2 className="text-2xl font-semibold text-primary mb-4">Key Areas in Playgroup Curriculum</h2>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
                 <li>Promoting positive peer social interaction</li>
                 <li>Opportunities for basic motor development</li>
                 <li>Exploration based learning</li>
@@ -50,17 +59,15 @@ const PlaygroupDetails = () => {
               </ul>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Kidzee Sessions</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <section className="bg-primary/5 rounded-xl p-6">
+                <h2 className="text-2xl font-semibold text-primary mb-4">Kidzee Sessions</h2>
+                <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
                   <li>Circle Time</li>
                   <li>Free Play</li>
                   <li>Knowledge Time</li>
                   <li>Language Time</li>
                   <li>Numeracy Time</li>
-                </ul>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
                   <li>Talk Time</li>
                   <li>Outdoor</li>
                   <li>Indoor</li>
@@ -68,39 +75,39 @@ const PlaygroupDetails = () => {
                   <li>Field Trips</li>
                   <li>Puppet shows and skits</li>
                 </ul>
-              </div>
-            </section>
+              </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold text-primary mb-4">Kidzee Special</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {[
-                  "Artsy",
-                  "Personality Development",
-                  "Showstopper",
-                  "Mental Might",
-                  "Eco-conscious",
-                  "Tell-a-Tale",
-                  "Library",
-                  "Sciencify",
-                  "Whirl & Twirl",
-                  "Sensorium",
-                  "Critical Thinking - Problem solving",
-                  "Intergrated Sanskar",
-                  "Augmented Reality - Fantasy Box"
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-primary/5 rounded-lg p-4 text-center text-gray-700 hover:bg-primary/10 transition-colors"
-                  >
-                    {item}
-                  </motion.div>
-                ))}
-              </div>
-            </section>
+              <section className="bg-primary/5 rounded-xl p-6">
+                <h2 className="text-2xl font-semibold text-primary mb-4">Kidzee Special</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {[
+                    "Artsy",
+                    "Personality Development",
+                    "Showstopper",
+                    "Mental Might",
+                    "Eco-conscious",
+                    "Tell-a-Tale",
+                    "Library",
+                    "Sciencify",
+                    "Whirl & Twirl",
+                    "Sensorium",
+                    "Critical Thinking - Problem solving",
+                    "Intergrated Sanskar",
+                    "Augmented Reality - Fantasy Box"
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="bg-white/50 rounded-lg p-2 text-sm text-gray-700 hover:bg-white/80 transition-colors"
+                    >
+                      {item}
+                    </motion.div>
+                  ))}
+                </div>
+              </section>
+            </div>
           </div>
         </motion.div>
       </div>
