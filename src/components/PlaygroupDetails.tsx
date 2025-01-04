@@ -32,6 +32,18 @@ const PlaygroupDetails = () => {
           <h1 className="text-4xl font-bold text-white mb-6 text-center">Playgroup Program</h1>
           
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl space-y-8">
+            {/* Age Group and Duration Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-primary/5 rounded-xl p-6">
+                <h2 className="text-2xl font-semibold text-primary mb-2">Age Group</h2>
+                <p className="text-lg text-gray-700">1.5 - 2.5 Years</p>
+              </div>
+              <div className="bg-primary/5 rounded-xl p-6">
+                <h2 className="text-2xl font-semibold text-primary mb-2">Duration</h2>
+                <p className="text-lg text-gray-700">3 Hours per Day</p>
+              </div>
+            </div>
+
             <p className="text-gray-600 italic">
               *As per RTE- Right to Education and NEP- National Education Policy from state to state.
             </p>
