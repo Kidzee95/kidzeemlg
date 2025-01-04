@@ -134,3 +134,5 @@ const Programs = () => {
     </div>
   );
 };
+
+export default Programs;
