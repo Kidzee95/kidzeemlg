@@ -8,6 +8,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "./ui/collapsible";
+import { useNavigate } from "react-router-dom";
 
 const programsList = [
   {
@@ -16,6 +17,7 @@ const programsList = [
     description: "Early development through play-based learning",
     details: "Our Play Group program focuses on sensory development, basic motor skills, and social interaction. Children engage in creative play, music, and movement activities designed to stimulate their natural curiosity and learning abilities.",
     mascotVariant: "pointing" as const,
+    path: "/programs/playgroup"
   },
   {
     title: "Nursery",
@@ -56,6 +58,13 @@ const programsList = [
 
 const ProgramCard = ({ program }: { program: typeof programsList[0] }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleReadMore = () => {
+    if (program.path) {
+      navigate(program.path);
+    }
+  };
 
   return (
     <motion.div
@@ -71,16 +80,29 @@ const ProgramCard = ({ program }: { program: typeof programsList[0] }) => {
         <p className="text-sm text-primary/60 mb-3">Age: {program.age}</p>
         <p className="text-gray-600 mb-4">{program.description}</p>
         
-        <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-          <CollapsibleTrigger asChild>
-            <Button variant="outline" size="sm" className="w-full">
-              {isOpen ? "Read Less" : "Read More"}
+        <div className="space-y-2">
+          <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+            <CollapsibleTrigger asChild>
+              <Button variant="outline" size="sm" className="w-full">
+                {isOpen ? "Show Less" : "Quick View"}
+              </Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-4">
+              <p className="text-gray-600">{program.details}</p>
+            </CollapsibleContent>
+          </Collapsible>
+          
+          {program.path && (
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="w-full"
+              onClick={handleReadMore}
+            >
+              Read More
             </Button>
-          </CollapsibleTrigger>
-          <CollapsibleContent className="mt-4">
-            <p className="text-gray-600">{program.details}</p>
-          </CollapsibleContent>
-        </Collapsible>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -112,5 +134,3 @@ const Programs = () => {
     </div>
   );
 };
-
-export default Programs;
