@@ -3,6 +3,7 @@ import Programs from "./components/Programs";
 import PlaygroupDetails from "./components/PlaygroupDetails";
 import NurseryDetails from "./components/NurseryDetails";
 import KindergartenDetails from "./components/KindergartenDetails";
+import PrimaryDetails from "./components/PrimaryDetails";
 import Index from "./pages/Index";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/programs/playgroup" element={<PlaygroupDetails />} />
         <Route path="/programs/nursery" element={<NurseryDetails />} />
         <Route path="/programs/kindergarten" element={<KindergartenDetails />} />
+        <Route path="/programs/primary" element={<PrimaryDetails />} />
       </Routes>
     </Router>
   );

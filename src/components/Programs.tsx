@@ -34,6 +34,14 @@ const programsList = [
     details: "Kindergarten curriculum ensures a smooth transition to formal schooling with age-appropriate activities in language, numeracy, concept, music, and art conducted in a planned manner throughout the program.",
     mascotVariant: "question" as const,
     path: "/programs/kindergarten"
+  },
+  {
+    title: "Grade 1 & 2",
+    age: "6 - 8 years",
+    description: "Comprehensive primary education",
+    details: "Our Grade 1 & 2 program builds on the strong foundation established in early years, focusing on core subjects while maintaining our interactive and engaging approach to learning. Students develop critical thinking, problem-solving skills, and creativity through a balanced curriculum.",
+    mascotVariant: "reading" as const,
+    path: "/programs/primary"
   }
 ];
 
