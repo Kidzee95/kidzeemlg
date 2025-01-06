@@ -2,12 +2,9 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import HomeButton from "./HomeButton";
 import { Button } from "./ui/button";
-import { Upload, ExternalLink } from "lucide-react";
-import { useToast } from "./ui/use-toast";
+import { ExternalLink } from "lucide-react";
 
 const Gallery = () => {
-  const { toast } = useToast();
-
   const images = [
     "/lovable-uploads/8ff7c785-324d-44f8-a7a8-3bb7051e29a6.png",
     "/lovable-uploads/1ba15ac2-0e6b-4240-b5d2-e9569395888b.png",
@@ -15,13 +12,6 @@ const Gallery = () => {
     "/lovable-uploads/290f85e1-9d23-446d-a0f2-0950e14eda93.png",
     "/lovable-uploads/bddb810b-0697-43eb-afd3-a52a373b6542.png",
   ];
-
-  const handleUpload = () => {
-    toast({
-      title: "Coming Soon",
-      description: "Image upload feature will be available soon!",
-    });
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20">
@@ -34,20 +24,14 @@ const Gallery = () => {
         >
           <div className="flex items-center justify-between">
             <h1 className="text-4xl font-bold text-primary">Our Gallery</h1>
-            <div className="flex gap-4">
-              <Button onClick={handleUpload} className="gap-2">
-                <Upload className="w-4 h-4" />
-                Upload Image
-              </Button>
-              <Button 
-                variant="secondary"
-                className="gap-2"
-                onClick={() => window.open("https://www.google.com/maps/uv?pb=!1s0x3a35250077828ec9%3A0x8f9a17a74ccae791!3m1!7e115!4s%2Fmaps%2Fplace%2Fkidzee%2Bmiryalaguda%2F%4016.8633039%2C79.5729762%2C3a%2C75y%2C39.92h%2C90t%2Fdata%3D*213m4*211e1*213m2*211sxkXu3fGsj1q-MR6i5zHBGQ*212e0*214m2*213m1*211s0x3a35250077828ec9%3A0x8f9a17a74ccae791%3Fsa%3DX%26ved%3D2ahUKEwjwqqeP1bCKAxUw4jgGHVleLh8Qpx96BAgvEAA!5skidzee%20miryalaguda%20-%20Google%20Search!15sCgIgARICGAI&imagekey=!1e10!2sAF1QipMpmoR6zRmpAYwQk9DaNyJ_zAHcH9dsNJapH08f&cr=le_a7&hl=en&ved=1t%3A206134&ictx=111", "_blank")}
-              >
-                <ExternalLink className="w-4 h-4" />
-                More Photos
-              </Button>
-            </div>
+            <Button 
+              style={{ backgroundColor: "#9b87f5" }}
+              className="gap-2 text-white hover:bg-opacity-90"
+              onClick={() => window.open("https://www.google.com/maps/uv?pb=!1s0x3a35250077828ec9%3A0x8f9a17a74ccae791!3m1!7e115!4s%2Fmaps%2Fplace%2Fkidzee%2Bmiryalaguda%2F%4016.8633039%2C79.5729762%2C3a%2C75y%2C39.92h%2C90t%2Fdata%3D*213m4*211e1*213m2*211sxkXu3fGsj1q-MR6i5zHBGQ*212e0*214m2*213m1*211s0x3a35250077828ec9%3A0x8f9a17a74ccae791%3Fsa%3DX%26ved%3D2ahUKEwjwqqeP1bCKAxUw4jgGHVleLh8Qpx96BAgvEAA!5skidzee%20miryalaguda%20-%20Google%20Search!15sCgIgARICGAI&imagekey=!1e10!2sAF1QipMpmoR6zRmpAYwQk9DaNyJ_zAHcH9dsNJapH08f&cr=le_a7&hl=en&ved=1t%3A206134&ictx=111", "_blank")}
+            >
+              <ExternalLink className="w-4 h-4" />
+              More Photos
+            </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
