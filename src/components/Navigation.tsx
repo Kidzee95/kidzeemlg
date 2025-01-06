@@ -14,6 +14,13 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToGallery = () => {
+    const gallerySection = document.querySelector("#gallery-section");
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -38,11 +45,11 @@ const Navigation = () => {
             {[
               { name: "Home", path: "/" },
               { name: "Programs", path: "/programs" },
-              { name: "Gallery", path: "/gallery" },
+              { name: "Gallery", action: scrollToGallery },
             ].map((item) => (
               <motion.a
                 key={item.name}
-                onClick={() => navigate(item.path)}
+                onClick={item.action || (() => navigate(item.path))}
                 whileHover={{ scale: 1.05 }}
                 className="text-gray-800 hover:text-primary transition-colors cursor-pointer"
               >
