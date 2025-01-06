@@ -21,39 +21,20 @@ const programsList = [
   },
   {
     title: "Nursery",
-    age: "2.5 - 3.5 years",
+    age: "2.6 - 3.5 years",
     description: "Foundation building with creative activities",
     details: "The Nursery program introduces structured learning through play, including basic language skills, number concepts, and creative expression. Children develop independence and social skills in a nurturing environment.",
     mascotVariant: "reading" as const,
+    path: "/programs/nursery"
   },
   {
-    title: "Jr. KG",
-    age: "3.5 - 4.5 years",
+    title: "Jr. KG & Sr. KG",
+    age: "4 - 6 years",
     description: "Interactive learning and skill development",
-    details: "Junior Kindergarten builds on early literacy and numeracy skills through interactive activities. The program includes phonics, basic writing, counting, and themed projects that encourage critical thinking and creativity.",
+    details: "Kindergarten curriculum ensures a smooth transition to formal schooling with age-appropriate activities in language, numeracy, concept, music, and art conducted in a planned manner throughout the program.",
     mascotVariant: "question" as const,
-  },
-  {
-    title: "Sr. KG",
-    age: "4.5 - 5.5 years",
-    description: "Comprehensive pre-primary education",
-    details: "Senior Kindergarten prepares children for primary school with advanced literacy and numeracy activities. The program includes reading comprehension, writing practice, mathematical concepts, and science exploration.",
-    mascotVariant: "standing" as const,
-  },
-  {
-    title: "Grade 1",
-    age: "5.5 - 6.5 years",
-    description: "Structured academic learning begins",
-    details: "Grade 1 introduces formal academic subjects including Language Arts, Mathematics, Science, and Social Studies. Students develop strong foundational skills through engaging lessons and hands-on activities.",
-    mascotVariant: "namaste" as const,
-  },
-  {
-    title: "Grade 2",
-    age: "6.5 - 7.5 years",
-    description: "Advanced primary education",
-    details: "Grade 2 builds on previous learning with more complex academic concepts. Students engage in advanced reading and writing, mathematical operations, scientific investigations, and social studies projects.",
-    mascotVariant: "pointing" as const,
-  },
+    path: "/programs/kindergarten"
+  }
 ];
 
 const ProgramCard = ({ program }: { program: typeof programsList[0] }) => {
