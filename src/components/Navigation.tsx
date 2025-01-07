@@ -42,7 +42,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/b9e8e32e-d85b-4c4b-a609-3c1620e94542.png" 
               alt="Kidzee Pre-school" 
-              className="h-12 md:h-16 w-auto"
+              className="h-16 md:h-20 w-auto" // Increased from h-12 md:h-16 to h-16 md:h-20
             />
           </motion.div>
           <div className="hidden md:flex space-x-8">
