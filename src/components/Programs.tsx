@@ -1,122 +1,79 @@
 import { motion } from "framer-motion";
-import Mascot from "./Mascot";
-import HomeButton from "./HomeButton";
-import { useState } from "react";
-import { Button } from "./ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
 import { useNavigate } from "react-router-dom";
+import Mascot from "./Mascot";
 
-const programsList = [
+const programs = [
   {
-    title: "Play Group",
-    age: "1.5 - 2.5 years",
-    description: "Early development through play-based learning",
-    details: "Our Play Group program focuses on sensory development, basic motor skills, and social interaction. Children engage in creative play, music, and movement activities designed to stimulate their natural curiosity and learning abilities.",
-    mascotVariant: "pointing" as const,
-    path: "/programs/playgroup"
+    title: "Preschool",
+    age: "3 - 5 Years",
+    description: "A nurturing environment for early learners to explore and grow.",
+    details: "Focus on social skills, basic literacy, and creativity.",
+    path: "/programs/preschool",
+    mascotVariant: "playing",
   },
   {
-    title: "Nursery",
-    age: "2.6 - 3.5 years",
-    description: "Foundation building with creative activities",
-    details: "The Nursery program introduces structured learning through play, including basic language skills, number concepts, and creative expression. Children develop independence and social skills in a nurturing environment.",
-    mascotVariant: "reading" as const,
-    path: "/programs/nursery"
-  },
-  {
-    title: "Jr. KG & Sr. KG",
-    age: "4 - 6 years",
-    description: "Interactive learning and skill development",
-    details: "Kindergarten curriculum ensures a smooth transition to formal schooling with age-appropriate activities in language, numeracy, concept, music, and art conducted in a planned manner throughout the program.",
-    mascotVariant: "question" as const,
-    path: "/programs/kindergarten"
+    title: "Kindergarten",
+    age: "5 - 6 Years",
+    description: "Building a strong foundation for lifelong learning.",
+    details: "Emphasis on literacy, numeracy, and emotional development.",
+    path: "/programs/kindergarten",
+    mascotVariant: "reading",
   },
   {
     title: "Grade 1 & 2",
-    age: "6 - 8 years",
-    description: "Comprehensive primary education",
-    details: "Our Grade 1 & 2 program builds on the strong foundation established in early years, focusing on core subjects while maintaining our interactive and engaging approach to learning. Students develop critical thinking, problem-solving skills, and creativity through a balanced curriculum.",
-    mascotVariant: "reading" as const,
-    path: "/programs/primary"
-  }
+    age: "6 - 8 Years",
+    description: "Comprehensive educational experience that builds on early years.",
+    details: "Core subjects, language development, and creative arts.",
+    path: "/programs/grade1-2",
+    mascotVariant: "namaste",
+  },
 ];
 
-const ProgramCard = ({ program }: { program: typeof programsList[0] }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Programs = () => {
   const navigate = useNavigate();
 
-  const handleReadMore = () => {
-    if (program.path) {
-      navigate(program.path);
-    }
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow"
-    >
-      <div className="h-48 bg-primary/5 relative">
-        <Mascot variant={program.mascotVariant} className="p-4" />
+    <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-20">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-10 w-24 h-24 bg-yellow-200 rounded-full opacity-20" />
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-pink-200 rounded-full opacity-20" />
+        <div className="absolute top-40 right-20 w-16 h-16 bg-blue-200 rounded-full opacity-20" />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-primary mb-2">{program.title}</h3>
-        <p className="text-sm text-primary/60 mb-3">Age: {program.age}</p>
-        <p className="text-gray-600 mb-4">{program.description}</p>
-        
-        <div className="space-y-2">
-          <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-            <CollapsibleTrigger asChild>
-              <Button variant="outline" size="sm" className="w-full">
-                {isOpen ? "Show Less" : "Quick View"}
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-4">
-              <p className="text-gray-600">{program.details}</p>
-            </CollapsibleContent>
-          </Collapsible>
-          
-          {program.path && (
-            <Button 
-              variant="default" 
-              size="sm" 
-              className="w-full"
-              onClick={handleReadMore}
-            >
-              Read More
-            </Button>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
-const Programs = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20">
-      <HomeButton />
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-primary mb-4">Our Programs</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover our comprehensive range of educational programs designed to
-            nurture young minds at every stage of their early development.
+            Discover our comprehensive range of educational programs designed to nurture young minds and foster holistic development.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {programsList.map((program) => (
-            <ProgramCard key={program.title} program={program} />
+          {programs.map((program, index) => (
+            <motion.div
+              key={program.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="relative group"
+              onClick={() => navigate(program.path)}
+            >
+              <div className="absolute inset-0 bg-white rounded-2xl transform group-hover:scale-105 transition-transform duration-300" />
+              <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer border border-gray-100">
+                <div className="h-48 mb-4 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl flex items-center justify-center">
+                  <Mascot variant={program.mascotVariant} className="w-32 h-32" />
+                </div>
+                <h3 className="text-xl font-semibold text-primary mb-2">{program.title}</h3>
+                <p className="text-sm text-gray-500 mb-2">{program.age}</p>
+                <p className="text-gray-600 mb-4">{program.description}</p>
+                <p className="text-sm text-gray-500">{program.details}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
