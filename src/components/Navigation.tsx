@@ -36,10 +36,14 @@ const Navigation = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-bold text-primary cursor-pointer"
+            className="cursor-pointer"
             onClick={() => navigate("/")}
           >
-            Kidzee
+            <img 
+              src="/lovable-uploads/b9e8e32e-d85b-4c4b-a609-3c1620e94542.png" 
+              alt="Kidzee Pre-school" 
+              className="h-12 md:h-16 w-auto"
+            />
           </motion.div>
           <div className="hidden md:flex space-x-8">
             {[
