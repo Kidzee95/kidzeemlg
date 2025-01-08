@@ -15,9 +15,9 @@ const Contact = () => {
         </motion.h2>
         <div className="flex flex-wrap justify-center gap-8">
           {[
-            { icon: <Phone className="w-8 h-8 text-primary" />, text: "Call Us", href: "tel:+919876543210" },
-            { icon: <Facebook className="w-8 h-8 text-primary" />, text: "Facebook", href: "https://www.facebook.com/kidzee.miryalaguda/" },
-            { icon: <Instagram className="w-8 h-8 text-primary" />, text: "Instagram", href: "https://www.instagram.com/kidzee.miryalaguda/" },
+            { icon: <Phone className="w-8 h-8 text-primary" />, text: "Call Us", href: "tel:+917989043138" },
+            { icon: <Facebook className="w-8 h-8 text-primary" />, text: "Facebook", href: "https://www.facebook.com/share/14puJkLBFer/" },
+            { icon: <Instagram className="w-8 h-8 text-primary" />, text: "Instagram", href: "https://www.instagram.com/kidzeemiryalaguda?igsh=MWJpNHh5eDB5aThsbQ==" },
             { icon: <MapPin className="w-8 h-8 text-primary" />, text: "Find Us", href: "https://maps.app.goo.gl/ahrLvFuSAQzXfcrm7" }
           ].map((item, index) => (
             <motion.a
