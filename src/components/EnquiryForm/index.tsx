@@ -1,11 +1,12 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { Form } from "@/components/ui/form";
 import { motion } from "framer-motion";
 import { FormFields } from "./FormFields";
 import { formSchema } from "./schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { FormHeader } from "./FormHeader";
 
 const EnquiryForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -22,11 +23,26 @@ const EnquiryForm = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
-      // Log the form data to console for now
-      console.log("Form submitted with values:", values);
+      // Format the message for WhatsApp
+      const message = `New Student Enquiry:\n
+Parent's Name: ${values.parentName}\n
+Child's Name: ${values.childName}\n
+Email: ${values.email}\n
+Phone: ${values.phone}\n
+Child's Age Group: ${values.childAge}\n
+Message: ${values.message || 'No additional message'}`;
+
+      // Encode the message for WhatsApp URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      // Create WhatsApp link with the phone number
+      const whatsappUrl = `https://wa.me/917989043138?text=${encodedMessage}`;
+      
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, '_blank');
       
       // Show success message
-      toast.success("Enquiry submitted successfully! We'll get back to you soon.");
+      toast.success("Redirecting to WhatsApp to send your enquiry!");
       
       // Reset the form
       form.reset();
@@ -39,21 +55,7 @@ const EnquiryForm = () => {
   return (
     <section className="py-16 bg-accent">
       <div className="container max-w-4xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold text-primary mb-4">
-            Student Enquiry
-          </h2>
-          <p className="text-gray-600">
-            We'd love to hear from you! Fill out the form below and we'll get back
-            to you shortly.
-          </p>
-        </motion.div>
-
+        <FormHeader />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
