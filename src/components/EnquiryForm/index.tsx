@@ -7,6 +7,7 @@ import { formSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { FormHeader } from "./FormHeader";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const EnquiryForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -23,30 +24,19 @@ const EnquiryForm = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
-      // Format the message for WhatsApp
-      const message = `*New Student Enquiry*%0a%0a
-*Parent's Name:* ${values.parentName}%0a
-*Child's Name:* ${values.childName}%0a
-*Email:* ${values.email}%0a
-*Phone:* ${values.phone}%0a
-*Child's Age Group:* ${values.childAge}%0a
-*Message:* ${values.message || 'No additional message'}`;
-
-      // Create WhatsApp link with the phone number in international format
-      const phoneNumber = "+917989043138"; // Added + symbol for international format
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber.replace('+', '')}&text=${message}`;
+      const whatsappUrl = getWhatsAppUrl(values);
       
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank');
       
       // Show success message
-      toast.success("Redirecting to WhatsApp to send your enquiry!");
+      toast.success("Opening WhatsApp with your enquiry details!");
       
       // Reset the form
       form.reset();
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error("Failed to submit enquiry. Please try again.");
+      toast.error("Failed to open WhatsApp. Please try again.");
     }
   };
 
