@@ -24,19 +24,17 @@ const EnquiryForm = () => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
       // Format the message for WhatsApp
-      const message = `New Student Enquiry:\n
-Parent's Name: ${values.parentName}\n
-Child's Name: ${values.childName}\n
-Email: ${values.email}\n
-Phone: ${values.phone}\n
-Child's Age Group: ${values.childAge}\n
-Message: ${values.message || 'No additional message'}`;
+      const message = `*New Student Enquiry*%0a%0a
+*Parent's Name:* ${values.parentName}%0a
+*Child's Name:* ${values.childName}%0a
+*Email:* ${values.email}%0a
+*Phone:* ${values.phone}%0a
+*Child's Age Group:* ${values.childAge}%0a
+*Message:* ${values.message || 'No additional message'}`;
 
-      // Encode the message for WhatsApp URL
-      const encodedMessage = encodeURIComponent(message);
-      
-      // Create WhatsApp link with the phone number
-      const whatsappUrl = `https://wa.me/917989043138?text=${encodedMessage}`;
+      // Create WhatsApp link with the phone number (without any spaces or special characters)
+      const phoneNumber = "917989043138"; // Country code (91) + phone number
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
       
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank');
