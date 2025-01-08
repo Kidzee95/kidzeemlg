@@ -32,9 +32,9 @@ const EnquiryForm = () => {
 *Child's Age Group:* ${values.childAge}%0a
 *Message:* ${values.message || 'No additional message'}`;
 
-      // Create WhatsApp link with the phone number (without any spaces or special characters)
-      const phoneNumber = "917989043138"; // Country code (91) + phone number
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+      // Create WhatsApp link with the phone number in international format
+      const phoneNumber = "+917989043138"; // Added + symbol for international format
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber.replace('+', '')}&text=${message}`;
       
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank');
