@@ -16,10 +16,10 @@ const Gallery = () => {
     "/lovable-uploads/8ff7c785-324d-44f8-a7a8-3bb7051e29a6.png",
     "/lovable-uploads/1ba15ac2-0e6b-4240-b5d2-e9569395888b.png",
     "/lovable-uploads/0b3449ff-f174-4034-8417-2e871f928a6b.png",
-    "/lovable-uploads/290f85e1-9d23-446d-a0f2-0950e14eda93.png",
   ];
 
   const additionalImages = [
+    "/lovable-uploads/290f85e1-9d23-446d-a0f2-0950e14eda93.png",
     "/lovable-uploads/bddb810b-0697-43eb-afd3-a52a373b6542.png",
     "/lovable-uploads/ceafc259-9108-4f5a-a7c4-fe414b9848d8.png",
     "/lovable-uploads/dda4c0e9-3d41-4133-9765-43a419c775d1.png",
@@ -53,7 +53,7 @@ const Gallery = () => {
           </div>
 
           {/* Featured Images Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredImages.map((image, index) => (
               <motion.div
                 key={index}
