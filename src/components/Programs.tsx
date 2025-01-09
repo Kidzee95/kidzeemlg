@@ -1,30 +1,42 @@
 import React from "react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Programs = () => {
   const programs = [
     {
       title: "Playgroup",
-      icon: "standing" as const, // Fix TypeScript error by explicitly typing as const
+      icon: "standing" as const,
       description: "For ages 1.8 - 2.5 years",
-      link: "/playgroup"
+      link: "/playgroup",
+      details: "Our playgroup program focuses on early socialization, sensory play, and basic motor skills development in a nurturing environment."
     },
     {
       title: "Nursery",
       icon: "book" as const,
       description: "For ages 2.5 - 3.5 years",
-      link: "/nursery"
+      link: "/nursery",
+      details: "The nursery program introduces structured learning through play, focusing on language development and creative expression."
     },
     {
       title: "Kindergarten",
       icon: "star" as const,
       description: "For ages 3.5 - 5 years",
-      link: "/kindergarten"
+      link: "/kindergarten",
+      details: "Our kindergarten program prepares children for formal schooling with a balanced approach to academic and social development."
     },
     {
       title: "After School Care",
       icon: "home" as const,
       description: "For ages 5 - 12 years",
-      link: "/after-school-care"
+      link: "/after-school-care",
+      details: "A supportive environment for school-age children featuring homework assistance, enrichment activities, and supervised play."
     },
   ];
 
@@ -36,16 +48,43 @@ const Programs = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {programs.map((program) => (
-            <div key={program.title} className="bg-white rounded-lg shadow-lg p-6">
-              <div className="flex items-center mb-4">
-                <span className={`icon-${program.icon} w-8 h-8 text-primary`} />
-                <h3 className="text-xl font-semibold ml-4">{program.title}</h3>
-              </div>
-              <p className="text-gray-600">{program.description}</p>
-              <a href={program.link} className="text-primary mt-4 inline-block">
-                Learn More
-              </a>
-            </div>
+            <motion.div
+              key={program.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-lg shadow-lg overflow-hidden"
+            >
+              <Collapsible>
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <span className={`icon-${program.icon} w-8 h-8 text-primary`} />
+                    <h3 className="text-xl font-semibold ml-4">{program.title}</h3>
+                  </div>
+                  <p className="text-gray-600 mb-4">{program.description}</p>
+                  <CollapsibleTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="w-full flex items-center justify-center gap-2 hover:bg-accent/50"
+                    >
+                      Learn More
+                      <ChevronDown className="h-4 w-4" />
+                    </Button>
+                  </CollapsibleTrigger>
+                </div>
+                <CollapsibleContent className="px-6 pb-6 animate-accordion-down">
+                  <div className="pt-4 border-t">
+                    <p className="text-gray-700">{program.details}</p>
+                    <a
+                      href={program.link}
+                      className="text-primary hover:underline mt-4 inline-block"
+                    >
+                      View Full Program Details →
+                    </a>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            </motion.div>
           ))}
         </div>
       </div>
