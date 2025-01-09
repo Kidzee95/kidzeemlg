@@ -3,13 +3,23 @@ import { Card, CardContent } from "./ui/card";
 import HomeButton from "./HomeButton";
 import { Button } from "./ui/button";
 import { ExternalLink } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
 
 const Gallery = () => {
-  const images = [
+  const featuredImages = [
     "/lovable-uploads/8ff7c785-324d-44f8-a7a8-3bb7051e29a6.png",
     "/lovable-uploads/1ba15ac2-0e6b-4240-b5d2-e9569395888b.png",
     "/lovable-uploads/0b3449ff-f174-4034-8417-2e871f928a6b.png",
     "/lovable-uploads/290f85e1-9d23-446d-a0f2-0950e14eda93.png",
+  ];
+
+  const additionalImages = [
     "/lovable-uploads/bddb810b-0697-43eb-afd3-a52a373b6542.png",
     "/lovable-uploads/ceafc259-9108-4f5a-a7c4-fe414b9848d8.png",
     "/lovable-uploads/dda4c0e9-3d41-4133-9765-43a419c775d1.png",
@@ -28,7 +38,7 @@ const Gallery = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="space-y-8"
+          className="space-y-12"
         >
           <div className="flex items-center justify-between">
             <h1 className="text-4xl font-bold text-primary">Our Gallery</h1>
@@ -42,8 +52,9 @@ const Gallery = () => {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {images.map((image, index) => (
+          {/* Featured Images Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featuredImages.map((image, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -52,10 +63,10 @@ const Gallery = () => {
               >
                 <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
                   <CardContent className="p-0">
-                    <div className="relative aspect-square">
+                    <div className="relative aspect-[4/3]">
                       <img
                         src={image}
-                        alt={`Gallery image ${index + 1}`}
+                        alt={`Featured gallery image ${index + 1}`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
@@ -63,6 +74,32 @@ const Gallery = () => {
                 </Card>
               </motion.div>
             ))}
+          </div>
+
+          {/* Additional Images Carousel */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold text-primary mb-6">More Photos</h2>
+            <Carousel className="w-full max-w-5xl mx-auto">
+              <CarouselContent>
+                {additionalImages.map((image, index) => (
+                  <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
+                    <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                      <CardContent className="p-0">
+                        <div className="relative aspect-square">
+                          <img
+                            src={image}
+                            alt={`Gallery image ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </motion.div>
       </div>
