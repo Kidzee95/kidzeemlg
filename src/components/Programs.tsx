@@ -42,8 +42,14 @@ const Programs = () => {
   ];
 
   return (
-    <section className="py-16 bg-accent">
-      <div className="container max-w-4xl mx-auto px-4">
+    <section 
+      className="py-16 min-h-screen bg-cover bg-center relative"
+      style={{
+        backgroundImage: "url('/lovable-uploads/6d518086-c3b3-4dd8-9541-218c2265fb6d.png')",
+      }}
+    >
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+      <div className="container max-w-4xl mx-auto px-4 relative z-10">
         <h2 className="text-3xl font-bold text-primary mb-8 text-center">
           Our Programs
         </h2>
@@ -54,7 +60,7 @@ const Programs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden"
+              className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden"
             >
               <Collapsible>
                 <div className="p-6">
