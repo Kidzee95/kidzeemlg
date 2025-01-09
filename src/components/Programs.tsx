@@ -7,6 +7,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Programs = () => {
   const programs = [
@@ -14,29 +15,29 @@ const Programs = () => {
       title: "Playgroup",
       icon: "standing" as const,
       description: "For ages 1.8 - 2.5 years",
-      link: "/playgroup",
+      link: "/programs/playgroup",
       details: "Our playgroup program focuses on early socialization, sensory play, and basic motor skills development in a nurturing environment."
     },
     {
       title: "Nursery",
       icon: "book" as const,
       description: "For ages 2.5 - 3.5 years",
-      link: "/nursery",
+      link: "/programs/nursery",
       details: "The nursery program introduces structured learning through play, focusing on language development and creative expression."
     },
     {
       title: "Kindergarten",
       icon: "star" as const,
       description: "For ages 3.5 - 5 years",
-      link: "/kindergarten",
+      link: "/programs/kindergarten",
       details: "Our kindergarten program prepares children for formal schooling with a balanced approach to academic and social development."
     },
     {
-      title: "After School Care",
+      title: "Primary",
       icon: "home" as const,
       description: "For ages 5 - 12 years",
-      link: "/after-school-care",
-      details: "A supportive environment for school-age children featuring homework assistance, enrichment activities, and supervised play."
+      link: "/programs/primary",
+      details: "A supportive environment for school-age children featuring comprehensive education with focus on holistic development."
     },
   ];
 
@@ -75,12 +76,12 @@ const Programs = () => {
                 <CollapsibleContent className="px-6 pb-6 animate-accordion-down">
                   <div className="pt-4 border-t">
                     <p className="text-gray-700">{program.details}</p>
-                    <a
-                      href={program.link}
+                    <Link
+                      to={program.link}
                       className="text-primary hover:underline mt-4 inline-block"
                     >
                       View Full Program Details →
-                    </a>
+                    </Link>
                   </div>
                 </CollapsibleContent>
               </Collapsible>
