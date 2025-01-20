@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import HomeButton from "./HomeButton";
-import { Button } from "./ui/button";
-import { ExternalLink } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -10,6 +8,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
+import { useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const Gallery = () => {
   const featuredImages = [
@@ -31,6 +32,8 @@ const Gallery = () => {
     "/lovable-uploads/add1c693-59ae-43ac-aa36-cdce0be0303f.png"
   ];
 
+  const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+
   return (
     <div id="gallery-section" className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20">
       <HomeButton />
@@ -42,14 +45,6 @@ const Gallery = () => {
         >
           <div className="flex items-center justify-between">
             <h1 className="text-4xl font-bold text-primary">Our Gallery</h1>
-            <Button 
-              style={{ backgroundColor: "#9b87f5" }}
-              className="gap-2 text-white hover:bg-opacity-90"
-              onClick={() => window.open("https://www.google.com/maps/uv?pb=!1s0x3a35250077828ec9%3A0x8f9a17a74ccae791!3m1!7e115!4s%2Fmaps%2Fplace%2Fkidzee%2Bmiryalaguda%2F%4016.8633039%2C79.5729762%2C3a%2C75y%2C39.92h%2C90t%2Fdata%3D*213m4*211e1*213m2*211sxkXu3fGsj1q-MR6i5zHBGQ*212e0*214m2*213m1*211s0x3a35250077828ec9%3A0x8f9a17a74ccae791%3Fsa%3DX%26ved%3D2ahUKEwjwqqeP1bCKAxUw4jgGHVleLh8Qpx96BAgvEAA!5skidzee%20miryalaguda%20-%20Google%20Search!15sCgIgARICGAI&imagekey=!1e10!2sAF1QipMpmoR6zRmpAYwQk9DaNyJ_zAHcH9dsNJapH08f&cr=le_a7&hl=en&ved=1t%3A206134&ictx=111", "_blank")}
-            >
-              <ExternalLink className="w-4 h-4" />
-              More Photos
-            </Button>
           </div>
 
           {/* Featured Images Grid */}
@@ -79,27 +74,29 @@ const Gallery = () => {
           {/* Additional Images Carousel */}
           <div className="mt-12">
             <h2 className="text-2xl font-semibold text-primary mb-6">More Photos</h2>
-            <Carousel className="w-full max-w-5xl mx-auto">
-              <CarouselContent>
-                {additionalImages.map((image, index) => (
-                  <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
-                    <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
-                      <CardContent className="p-0">
-                        <div className="relative aspect-square">
-                          <img
-                            src={image}
-                            alt={`Gallery image ${index + 1}`}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+            <div className="overflow-hidden" ref={emblaRef}>
+              <Carousel className="w-full max-w-5xl mx-auto">
+                <CarouselContent>
+                  {additionalImages.map((image, index) => (
+                    <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
+                      <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                        <CardContent className="p-0">
+                          <div className="relative aspect-square">
+                            <img
+                              src={image}
+                              alt={`Gallery image ${index + 1}`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </div>
           </div>
         </motion.div>
       </div>
