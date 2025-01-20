@@ -38,7 +38,7 @@ const Gallery = () => {
     align: "start",
     skipSnaps: false,
     dragFree: false,
-    speed: 10 // Slower transition speed for smoother movement
+    duration: 50 // Using duration instead of speed for transition timing
   }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
 
   return (
