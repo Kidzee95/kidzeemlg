@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { motion } from "framer-motion";
+import { generateWhatsAppUrl } from "@/utils/whatsapp";
 
 const formSchema = z.object({
   parentName: z.string().min(2, "Parent name must be at least 2 characters"),
@@ -44,8 +45,13 @@ const EnquiryForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    toast.success("Enquiry submitted successfully! We'll get back to you soon.");
+    const whatsappNumber = "7989043138";
+    const whatsappUrl = generateWhatsAppUrl(whatsappNumber, values);
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+    
+    toast.success("Enquiry submitted successfully! Redirecting to WhatsApp...");
     form.reset();
   };
 
