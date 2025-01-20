@@ -20,7 +20,7 @@ const Gallery = () => {
   ];
 
   const additionalImages = [
-    "/lovable-uploads/825a440e-251e-4221-94a5-274c2bf083bd.png", // Added new image
+    "/lovable-uploads/825a440e-251e-4221-94a5-274c2bf083bd.png",
     "/lovable-uploads/290f85e1-9d23-446d-a0f2-0950e14eda93.png",
     "/lovable-uploads/bddb810b-0697-43eb-afd3-a52a373b6542.png",
     "/lovable-uploads/ceafc259-9108-4f5a-a7c4-fe414b9848d8.png",
@@ -33,7 +33,13 @@ const Gallery = () => {
     "/lovable-uploads/add1c693-59ae-43ac-aa36-cdce0be0303f.png"
   ];
 
-  const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+  const [emblaRef] = useEmblaCarousel({ 
+    loop: true,
+    align: "start",
+    skipSnaps: false,
+    dragFree: false,
+    speed: 10 // Slower transition speed for smoother movement
+  }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
 
   return (
     <div id="gallery-section" className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20">
@@ -63,7 +69,7 @@ const Gallery = () => {
                       <img
                         src={image}
                         alt={`Featured gallery image ${index + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                       />
                     </div>
                   </CardContent>
@@ -80,17 +86,23 @@ const Gallery = () => {
                 <CarouselContent>
                   {additionalImages.map((image, index) => (
                     <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
-                      <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
-                        <CardContent className="p-0">
-                          <div className="relative aspect-square">
-                            <img
-                              src={image}
-                              alt={`Gallery image ${index + 1}`}
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                          </div>
-                        </CardContent>
-                      </Card>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                          <CardContent className="p-0">
+                            <div className="relative aspect-square">
+                              <img
+                                src={image}
+                                alt={`Gallery image ${index + 1}`}
+                                className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                              />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
