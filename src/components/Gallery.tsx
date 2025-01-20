@@ -38,18 +38,14 @@ const Gallery = () => {
     align: "start",
     skipSnaps: false,
     dragFree: false,
-    duration: 50 // Using duration instead of speed for transition timing
+    duration: 50
   }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
 
   return (
-    <div id="gallery-section" className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20">
+    <div id="gallery-section" className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20 overflow-hidden">
       <HomeButton />
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="space-y-12"
-        >
+      <div className="container mx-auto px-6 relative">
+        <div className="space-y-12">
           <div className="flex items-center justify-between">
             <h1 className="text-4xl font-bold text-primary">Our Gallery</h1>
           </div>
@@ -57,24 +53,24 @@ const Gallery = () => {
           {/* Featured Images Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredImages.map((image, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
+                className="transform-gpu"
               >
                 <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
                   <CardContent className="p-0">
                     <div className="relative aspect-[4/3]">
-                      <img
+                      <motion.img
                         src={image}
                         alt={`Featured gallery image ${index + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
                       />
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -86,23 +82,21 @@ const Gallery = () => {
                 <CarouselContent>
                   {additionalImages.map((image, index) => (
                     <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                      >
+                      <div className="transform-gpu">
                         <Card className="overflow-hidden group hover:shadow-lg transition-shadow duration-300">
                           <CardContent className="p-0">
                             <div className="relative aspect-square">
-                              <img
+                              <motion.img
                                 src={image}
                                 alt={`Gallery image ${index + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                                className="w-full h-full object-cover"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
                               />
                             </div>
                           </CardContent>
                         </Card>
-                      </motion.div>
+                      </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
@@ -111,7 +105,7 @@ const Gallery = () => {
               </Carousel>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
