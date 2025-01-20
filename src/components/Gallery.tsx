@@ -20,6 +20,7 @@ const Gallery = () => {
   ];
 
   const additionalImages = [
+    "/lovable-uploads/825a440e-251e-4221-94a5-274c2bf083bd.png", // Added new image
     "/lovable-uploads/290f85e1-9d23-446d-a0f2-0950e14eda93.png",
     "/lovable-uploads/bddb810b-0697-43eb-afd3-a52a373b6542.png",
     "/lovable-uploads/ceafc259-9108-4f5a-a7c4-fe414b9848d8.png",
