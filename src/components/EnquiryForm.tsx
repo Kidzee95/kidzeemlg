@@ -21,6 +21,15 @@ import {
 } from "@/components/ui/select";
 import { motion } from "framer-motion";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { useState } from "react";
 
 const formSchema = z.object({
   parentName: z.string().min(2, "Parent name must be at least 2 characters"),
@@ -32,6 +41,8 @@ const formSchema = z.object({
 });
 
 const EnquiryForm = () => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,6 +58,9 @@ const EnquiryForm = () => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
       const whatsappUrl = getWhatsAppUrl(values);
+      
+      // Show confirmation dialog
+      setShowConfirmation(true);
       
       // Open WhatsApp in a new tab
       window.open(whatsappUrl, '_blank');
@@ -210,6 +224,28 @@ const EnquiryForm = () => {
           </Form>
         </motion.div>
       </div>
+
+      <AlertDialog open={showConfirmation} onOpenChange={setShowConfirmation}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Thank You!</AlertDialogTitle>
+            <AlertDialogDescription className="text-center py-4">
+              Thank you for your submission! We appreciate your input and will get back to you shortly. 
+              We're redirecting you to WhatsApp to continue the conversation.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="sm:justify-center">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setShowConfirmation(false)}
+              className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity"
+            >
+              Close
+            </motion.button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   );
 };
