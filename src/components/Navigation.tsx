@@ -33,6 +33,17 @@ const Navigation = () => {
     }
   };
 
+  const scrollToTop = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -49,7 +60,7 @@ const Navigation = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="cursor-pointer"
-            onClick={() => navigate("/")}
+            onClick={scrollToTop}
           >
             <img 
               src="/lovable-uploads/b9e8e32e-d85b-4c4b-a609-3c1620e94542.png" 
@@ -59,7 +70,7 @@ const Navigation = () => {
           </motion.div>
           <div className="hidden md:flex space-x-8">
             {[
-              { name: "Home", action: () => navigate("/") },
+              { name: "Home", action: scrollToTop },
               { name: "Programs", action: () => scrollToSection("programs-section") },
               { name: "Gallery", action: () => scrollToSection("gallery-section") },
             ].map((item) => (
