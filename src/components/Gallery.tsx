@@ -10,7 +10,6 @@ import {
 } from "./ui/carousel";
 import { useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 
 const Gallery = () => {
   const featuredImages = [
@@ -37,9 +36,8 @@ const Gallery = () => {
     loop: true,
     align: "start",
     skipSnaps: false,
-    dragFree: false,
-    duration: 50
-  }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
+    dragFree: false
+  });
 
   return (
     <div id="gallery-section" className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20 overflow-hidden">
