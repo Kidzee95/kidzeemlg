@@ -43,6 +43,7 @@ const Programs = () => {
 
   return (
     <section 
+      id="programs-section"
       className="py-16 min-h-screen bg-cover bg-center relative"
       style={{
         backgroundImage: "url('/lovable-uploads/6d518086-c3b3-4dd8-9541-218c2265fb6d.png')",

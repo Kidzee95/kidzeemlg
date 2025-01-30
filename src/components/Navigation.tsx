@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +15,21 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToGallery = () => {
-    const gallerySection = document.querySelector("#gallery-section");
-    if (gallerySection) {
-      gallerySection.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const section = document.querySelector(`#${sectionId}`);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const section = document.querySelector(`#${sectionId}`);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -42,18 +54,18 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/b9e8e32e-d85b-4c4b-a609-3c1620e94542.png" 
               alt="Kidzee Pre-school" 
-              className="h-16 md:h-20 w-auto" // Increased from h-12 md:h-16 to h-16 md:h-20
+              className="h-16 md:h-20 w-auto"
             />
           </motion.div>
           <div className="hidden md:flex space-x-8">
             {[
-              { name: "Home", path: "/" },
-              { name: "Programs", path: "/programs" },
-              { name: "Gallery", action: scrollToGallery },
+              { name: "Home", action: () => navigate("/") },
+              { name: "Programs", action: () => scrollToSection("programs-section") },
+              { name: "Gallery", action: () => scrollToSection("gallery-section") },
             ].map((item) => (
               <motion.a
                 key={item.name}
-                onClick={item.action || (() => navigate(item.path))}
+                onClick={item.action}
                 whileHover={{ scale: 1.05 }}
                 className="text-gray-800 hover:text-primary transition-colors cursor-pointer"
               >
