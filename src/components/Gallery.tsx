@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
+import { Button } from "./ui/button";
 import HomeButton from "./HomeButton";
 
 const Gallery = () => {
@@ -20,6 +21,10 @@ const Gallery = () => {
     "/lovable-uploads/add1c693-59ae-43ac-aa36-cdce0be0303f.png"
   ];
 
+  const handleMorePhotosClick = () => {
+    window.open("https://www.google.com/maps/contrib/103138633215258943068/photos/@16.8633642,79.5730289,3a,75y,90t/data=!3m7!1e2!3m5!1sAF1QipMEEJaXZ1-tz49bWOgwUKadT_Vi5w7B-zv0cvjn!2e10!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipMEEJaXZ1-tz49bWOgwUKadT_Vi5w7B-zv0cvjn%3Dw462-h260-k-no!7i5456!8i3064!4m3!8m2!3m1!1e1?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoASAFQAw%3D%3D", "_blank");
+  };
+
   return (
     <div id="gallery-section" className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 py-20 overflow-hidden">
       <HomeButton />
@@ -27,6 +32,13 @@ const Gallery = () => {
         <div className="space-y-12">
           <div className="flex items-center justify-between">
             <h1 className="text-4xl font-bold text-primary">Our Gallery</h1>
+            <Button 
+              onClick={handleMorePhotosClick}
+              variant="outline"
+              className="hover:bg-primary hover:text-white transition-colors"
+            >
+              More Photos
+            </Button>
           </div>
 
           {/* Featured Images Grid */}
